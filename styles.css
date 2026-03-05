@@ -1118,6 +1118,10 @@ a[x-apple-data-detectors] {
     .detail-box.center {
         margin: 20px 0;
     }
+    .footer-names {
+    font-size: 1.3rem; 
+
+}
 }
 
 @media (max-width: 600px) {
