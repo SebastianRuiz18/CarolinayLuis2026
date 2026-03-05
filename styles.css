@@ -904,6 +904,87 @@ a[x-apple-data-detectors] {
 }
 
 /* ==========================================
+   SECCIÓN CONTACTO
+   ========================================== */
+
+.contact-section {
+    background-color: var(--color-accent);
+    color: var(--color-bg-main); 
+    text-align: center;
+}
+
+.contact-section .section-icon {
+    filter: brightness(0) invert(1); 
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.contact-section .section-title {
+    color: var(--color-bg-main); 
+    font-family: var(--font-script); 
+    font-weight: normal;
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+}
+
+.contact-text {
+    margin: 30px auto;
+    font-size: 1.1rem; 
+    line-height: 1.8;
+    max-width: 600px; 
+    font-family: var(--font-sans); 
+    text-transform: uppercase;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 40px;
+    max-width: 900px; 
+    margin: 40px auto 0 auto;
+}
+
+.contact-card {
+    background-color: transparent;
+    border: 3px solid var(--color-bg-main); 
+    border-radius: 45% 55% 60% 40% / 60% 40% 55% 45%;
+    padding: 35px 30px;
+    transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: scale(1.03); 
+}
+
+.contact-card h3 {
+    font-family: var(--font-script); 
+    font-weight: normal;
+    font-size: 2.5rem;
+    color: var(--color-bg-main);
+    margin-bottom: 20px;
+}
+
+.contact-card p {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: var(--color-bg-main);
+    margin: 5px 0;
+    font-family: var(--font-sans); 
+}
+
+.phone-link {
+    color: inherit !important; /* Hereda el color crema del párrafo padre */
+    text-decoration: none !important; /* Sin subrayado */
+    cursor: pointer;
+    font-family: inherit; /* Asegura que use la misma fuente */
+}
+
+/* Opcional: Un pequeño cambio de opacidad al pasar el mouse/tocar */
+.phone-link:hover {
+    opacity: 0.8;
+}
+
+/* ==========================================
    FOOTER & WATERMARK
    ========================================== */
 
