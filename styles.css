@@ -938,9 +938,9 @@ a[x-apple-data-detectors] {
 
 .contact-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 1fr; /* Una sola columna */
     gap: 40px;
-    max-width: 900px; 
+    max-width: 450px; /* Reducido de 900px a 450px para que la tarjeta no se estire y mantenga su forma */
     margin: 40px auto 0 auto;
 }
 
@@ -948,7 +948,7 @@ a[x-apple-data-detectors] {
     background-color: transparent;
     border: 3px solid var(--color-bg-main); 
     border-radius: 45% 55% 60% 40% / 60% 40% 55% 45%;
-    padding: 35px 30px;
+    padding: 45px 30px; /* Un poco más de padding vertical para equilibrar */
     transition: transform 0.3s ease;
 }
 
@@ -961,11 +961,11 @@ a[x-apple-data-detectors] {
     font-weight: normal;
     font-size: 2.5rem;
     color: var(--color-bg-main);
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .contact-card p {
-    font-size: 1.3rem;
+    font-size: 1.1rem; /* Ligeramente más pequeño para que el correo quepa bien */
     line-height: 1.8;
     color: var(--color-bg-main);
     margin: 5px 0;
@@ -973,13 +973,13 @@ a[x-apple-data-detectors] {
 }
 
 .phone-link {
-    color: inherit !important; /* Hereda el color crema del párrafo padre */
-    text-decoration: none !important; /* Sin subrayado */
+    color: inherit !important; 
+    text-decoration: none !important; 
     cursor: pointer;
-    font-family: inherit; /* Asegura que use la misma fuente */
+    font-family: inherit; 
+    word-break: break-all; /* CRUCIAL: Fuerza al correo largo a bajar de renglón en móviles pequeños en lugar de salirse de la tarjeta */
 }
 
-/* Opcional: Un pequeño cambio de opacidad al pasar el mouse/tocar */
 .phone-link:hover {
     opacity: 0.8;
 }
