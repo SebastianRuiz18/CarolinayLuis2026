@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // ==========================================
-    // RSVP FORM HANDLING (SIMULADO)
+    // RSVP FORM HANDLING (ENVÍO REAL VÍA FORMSUBMIT)
     // ==========================================
     const rsvpForm = document.getElementById('rsvpForm');
     const confirmationMessage = document.getElementById('confirmationMessage');
@@ -30,40 +30,38 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if(rsvpForm) {
         rsvpForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+            e.preventDefault(); 
             
-            // Efecto visual de "Enviando"
             const originalBtnText = submitButton.innerText;
             submitButton.innerText = "ENVIANDO...";
             submitButton.disabled = true;
             submitButton.style.opacity = "0.7";
             
-            // Recolectar datos
-            const formData = {
-                Nombre: document.getElementById('name').value,
-                Email: document.getElementById('email').value,
-                Telefono: document.getElementById('phone').value,
-                Asistencia: document.getElementById('attendance').value,
-                Invitados_Extra: document.getElementById('guests').value,
-                Alergias: document.getElementById('dietary').value,
-                Mensaje: document.getElementById('message').value,
-                Cancion: document.getElementById('song').value
-            };
+            const formData = new FormData(rsvpForm);
             
-            // Simular envío con un temporizador (1.5 segundos)
-            setTimeout(() => {
-                console.log('Form data simulado:', formData);
-                
-                // Ocultar form y mostrar mensaje de éxito
-                rsvpForm.style.display = 'none';
-                confirmationMessage.style.display = 'block';
-                confirmationMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
-                // Restaurar botón (por si recargan o resetean)
+            fetch(rsvpForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // ÉXITO
+                    rsvpForm.style.display = 'none';
+                    confirmationMessage.style.display = 'block';
+                    confirmationMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    rsvpForm.reset(); 
+                } else {
+                    alert("Oops! Hubo un problema al enviar tu confirmación. Intenta de nuevo.");
+                }
+            }).catch(error => {
+                alert("Oops! Hubo un problema de conexión. Por favor, verifica tu internet e intenta de nuevo.");
+            }).finally(() => {
                 submitButton.innerText = originalBtnText;
                 submitButton.disabled = false;
                 submitButton.style.opacity = "1";
-            }, 1500);
+            });
         });
     }
     
